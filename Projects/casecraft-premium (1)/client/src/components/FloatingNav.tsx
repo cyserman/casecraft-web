@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "wouter";
 
 /**
  * FloatingNav – a premium, glass‑morphism navigation bar that stays fixed at the top of the viewport.
@@ -21,13 +21,18 @@ const navItems = [
 ];
 
 export const FloatingNav: React.FC = () => {
+    const [location] = useLocation();
+
     return (
         <nav className="floating-nav flex items-center justify-center space-x-4 px-4 py-2">
             {navItems.map((item) => (
                 <Link
                     key={item.to}
-                    to={item.to}
-                    className="rounded-full px-4 py-1 text-sm font-medium text‑navy‑blue transition-colors hover:bg‑navy‑blue hover:text‑off‑white"
+                    href={item.to}
+                    className={`rounded-full px-4 py-1 text-sm font-medium transition-colors ${location === item.to
+                            ? "bg-navy-blue text-off-white"
+                            : "text-navy-blue hover:bg-navy-blue hover:text-off-white"
+                        }`}
                 >
                     {item.name}
                 </Link>

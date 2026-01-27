@@ -1,6 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400;500;700&display=swap');
 @import "tailwindcss";
 @import "tw-animate-css";
-@import url('https://fonts.googleapis.com/css2?family=Georgia:wght@400;700&family=Roboto:wght@400;500;600;700&display=swap');
 
 @custom-variant dark (&:is(.dark *));
 
@@ -41,37 +41,59 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
-  /* Griff Law Brand Colors */
-  --color-navy-blue: #1e3a5f;
-  --color-dark-blue: #2c5282;
-  --color-off-blue: #4a7ba7;
-  --color-steel-blue: #4299e1;
-  --color-charcoal-gray: #2d3748;
-  --color-medium-gray: #718096;
-  --color-light-gray: #e2e8f0;
-  --color-off-white: #f7fafc;
-  --color-slate-gray: #cbd5e0;
+  /* Anti Gravity: Deep Stealth Palette */
+  --color-navy-blue: #0f172a;
+  /* Deep Slate/Charcoal */
+  --color-dark-blue: #020617;
+  /* Almost Black */
+  --color-off-blue: #1e293b;
+  /* Slate 800 */
+  --color-steel-blue: #94a3b8;
+  /* Slate 400 */
+  --color-gold: #fbbf24;
+  /* Amber 400 - High Contrast Gold */
+  --color-gold-light: #fcd34d;
+  /* Amber 300 */
+  --color-charcoal-gray: #f8fafc;
+  /* Slate 50 - High Contrast Text */
+  --color-medium-gray: #cbd5e1;
+  /* Slate 300 */
+  --color-light-gray: #1e293b;
+  /* Dark bg for inputs */
+  --color-off-white: #020617;
+  /* Dark Background Base */
+  --color-slate-gray: #475569;
+  /* Slate 600 */
 }
 
 :root {
-  /* Griff Law Brand Colors */
-  --navy-blue: #1e3a5f;
-  --dark-blue: #2c5282;
-  --off-blue: #4a7ba7;
-  --steel-blue: #4299e1;
-  --charcoal-gray: #2d3748;
-  --medium-gray: #718096;
-  --light-gray: #e2e8f0;
-  --off-white: #f7fafc;
-  --slate-gray: #cbd5e0;
-  
-  /* Glassmorphism Effects */
-  --glass-blur: blur(10px);
-  --glass-blur-sm: blur(5px);
-  --glass-blur-lg: blur(20px);
-  --glass-opacity: 0.8;
-  --glass-border: 1px solid rgba(255, 255, 255, 0.18);
-  
+  /* Griff Law Brand Colors - Deep Stealth Override */
+  --primary-color: #0f172a;
+  --secondary-color: #fbbf24;
+  --accent-color: #020617;
+  --text-color: #f8fafc;
+  --light-text: #cbd5e1;
+
+  /* Mapping */
+  --navy-blue: var(--primary-color);
+  --dark-blue: #020617;
+  --off-blue: #1e293b;
+  --steel-blue: #94a3b8;
+  --color-gold: var(--secondary-color);
+  --charcoal-gray: var(--text-color);
+  --medium-gray: #cbd5e1;
+  --light-gray: #1e293b;
+  --off-white: #020617;
+  --slate-gray: #475569;
+
+  /* Glassmorphism Effects - Stealth Mode */
+  --glass-blur: blur(12px);
+  --glass-blur-sm: blur(8px);
+  --glass-blur-lg: blur(24px);
+  --glass-opacity: 0.7;
+  --glass-border: 1px solid rgba(251, 191, 36, 0.1);
+  /* Subtle Gold Border */
+
   --primary: var(--navy-blue);
   --primary-foreground: var(--off-white);
   --sidebar-primary: var(--dark-blue);
@@ -98,13 +120,14 @@
   --destructive-foreground: oklch(0.985 0 0);
   --border: var(--slate-gray);
   --input: var(--light-gray);
-  --ring: var(--steel-blue);
+  --ring: var(--secondary-color);
+  /* Gold focus rings */
   --sidebar: var(--off-white);
   --sidebar-foreground: var(--charcoal-gray);
   --sidebar-accent: var(--light-gray);
   --sidebar-accent-foreground: var(--navy-blue);
   --sidebar-border: var(--slate-gray);
-  --sidebar-ring: var(--steel-blue);
+  --sidebar-ring: var(--secondary-color);
 }
 
 .dark {
@@ -123,7 +146,7 @@
   --muted: oklch(0.274 0.006 286.033);
   --muted-foreground: oklch(0.705 0.015 286.067);
   --accent: oklch(0.274 0.006 286.033);
-  --accent-foreground:  oklch(0.92 0.005 65);
+  --accent-foreground: oklch(0.92 0.005 65);
   --destructive: oklch(0.704 0.191 22.216);
   --destructive-foreground: oklch(0.985 0 0);
   --border: oklch(1 0 0 / 10%);
@@ -137,7 +160,7 @@
   --sidebar: oklch(0.21 0.006 285.885);
   --sidebar-foreground: oklch(0.85 0.005 65);
   --sidebar-accent: oklch(0.274 0.006 286.033);
-  --sidebar-accent-foreground:  oklch(0.985 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.488 0.243 264.376);
 }
@@ -146,9 +169,11 @@
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
   }
+
   button:not(:disabled),
   [role="button"]:not([aria-disabled="true"]),
   [type="button"]:not(:disabled),
@@ -190,16 +215,16 @@
       max-width: 1280px;
     }
   }
-  
-  /* Glassmorphism Components - Direct CSS */
+
+  /* Glassmorphism Components - Stealth Dark */
   .glass-panel {
-    background: rgba(255, 255, 255, 0.8);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(15, 23, 42, 0.7);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(251, 191, 36, 0.1);
     border-radius: 0.75rem;
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
   }
-  
+
   .glass-panel-sm {
     background: rgba(255, 255, 255, 0.7);
     backdrop-filter: blur(5px);
@@ -207,15 +232,16 @@
     border-radius: 0.5rem;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
   }
-  
+
   .glass-panel-lg {
-    background: rgba(255, 255, 255, 0.85);
-    backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.25);
+    background: rgba(2, 6, 23, 0.85);
+    /* Darker for large panels */
+    backdrop-filter: blur(24px);
+    border: 1px solid rgba(148, 163, 184, 0.1);
     border-radius: 1rem;
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
   }
-  
+
   .glass-button {
     background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
     backdrop-filter: blur(10px);
@@ -227,12 +253,12 @@
     padding: 0.5rem 1rem;
     cursor: pointer;
   }
-  
+
   .glass-button:hover {
     border-color: rgba(255, 255, 255, 0.5);
     background: rgba(255, 255, 255, 0.3);
   }
-  
+
   .glass-button-primary {
     background: linear-gradient(to bottom right, rgba(30, 58, 95, 0.9), rgba(44, 82, 130, 0.9));
     backdrop-filter: blur(10px);
@@ -245,12 +271,12 @@
     cursor: pointer;
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
   }
-  
+
   .glass-button-primary:hover {
     background: linear-gradient(to bottom right, rgba(30, 58, 95, 1), rgba(44, 82, 130, 1));
     box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.15);
   }
-  
+
   .glass-button-secondary {
     background: linear-gradient(to bottom right, rgba(66, 153, 225, 0.8), rgba(74, 123, 167, 0.8));
     backdrop-filter: blur(10px);
@@ -263,12 +289,12 @@
     cursor: pointer;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
   }
-  
+
   .glass-button-secondary:hover {
     background: linear-gradient(to bottom right, rgba(66, 153, 225, 1), rgba(74, 123, 167, 1));
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
   }
-  
+
   .floating-nav {
     position: fixed;
     top: 0;
@@ -284,78 +310,206 @@
     border: 1px solid rgba(255, 255, 255, 0.25);
     box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
   }
-  
+
   /* Typography */
-  h1, h2, h3, h4, h5, h6 {
-    font-family: Georgia, serif;
-    font-weight: bold;
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
     color: var(--navy-blue);
   }
-  
+
   h1 {
-    font-size: 2.25rem;
+    font-size: 2.5rem;
   }
-  
+
   h2 {
-    font-size: 1.875rem;
+    font-size: 2.2rem;
   }
-  
+
   h3 {
     font-size: 1.5rem;
   }
-  
+
   body {
-    font-family: system-ui, -apple-system, sans-serif;
+    font-family: 'Roboto', sans-serif;
     color: var(--charcoal-gray);
-    line-height: 1.625;
+    line-height: 1.7;
   }
-  
+
   a {
     color: var(--steel-blue);
     transition: color 200ms;
   }
-  
+
   a:hover {
     color: var(--dark-blue);
   }
-  
+
   /* Animations */
   @keyframes float {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-10px); }
+
+    0%,
+    100% {
+      transform: translateY(0px);
+    }
+
+    50% {
+      transform: translateY(-10px);
+    }
   }
-  
+
   @keyframes slideInDown {
     from {
       opacity: 0;
       transform: translateY(-20px);
     }
+
     to {
       opacity: 1;
       transform: translateY(0);
     }
   }
-  
+
   @keyframes slideInUp {
     from {
       opacity: 0;
       transform: translateY(20px);
     }
+
     to {
       opacity: 1;
       transform: translateY(0);
     }
   }
-  
+
   .animate-float {
     animation: float 3s ease-in-out infinite;
   }
-  
+
   .animate-slide-in-down {
     animation: slideInDown 0.6s ease-out;
   }
-  
+
   .animate-slide-in-up {
     animation: slideInUp 0.6s ease-out;
+  }
+
+  /* Brand color utilities for Tailwind */
+  .text-navy-blue {
+    color: var(--navy-blue);
+  }
+
+  .text-dark-blue {
+    color: var(--dark-blue);
+  }
+
+  .text-off-blue {
+    color: var(--off-blue);
+  }
+
+  .text-steel-blue {
+    color: var(--steel-blue);
+  }
+
+  .text-charcoal-gray {
+    color: var(--charcoal-gray);
+  }
+
+  .text-medium-gray {
+    color: var(--medium-gray);
+  }
+
+  .text-light-gray {
+    color: var(--light-gray);
+  }
+
+  .text-off-white {
+    color: var(--off-white);
+  }
+
+  .text-slate-gray {
+    color: var(--slate-gray);
+  }
+
+  .bg-navy-blue {
+    background-color: var(--navy-blue);
+  }
+
+  .bg-dark-blue {
+    background-color: var(--dark-blue);
+  }
+
+  .bg-off-blue {
+    background-color: var(--off-blue);
+  }
+
+  .bg-steel-blue {
+    background-color: var(--steel-blue);
+  }
+
+  .bg-charcoal-gray {
+    background-color: var(--charcoal-gray);
+  }
+
+  .bg-medium-gray {
+    background-color: var(--medium-gray);
+  }
+
+  .bg-light-gray {
+    background-color: var(--light-gray);
+  }
+
+  .bg-off-white {
+    background-color: var(--off-white);
+  }
+
+  .bg-slate-gray {
+    background-color: var(--slate-gray);
+  }
+
+  .border-navy-blue {
+    border-color: var(--navy-blue);
+  }
+
+  .border-dark-blue {
+    border-color: var(--dark-blue);
+  }
+
+  .border-off-blue {
+    border-color: var(--off-blue);
+  }
+
+  .border-steel-blue {
+    border-color: var(--steel-blue);
+  }
+
+  .border-charcoal-gray {
+    border-color: var(--charcoal-gray);
+  }
+
+  /* Deep Stealth Text Utility Overrides */
+  .text-navy-blue {
+    color: #f8fafc !important;
+  }
+
+  /* Force text to white in dark mode context */
+  .text-charcoal-gray {
+    color: #cbd5e1 !important;
+  }
+
+  /* Light grey text */
+
+  /* Gold Gradient Button */
+  .gold-gradient {
+    background: linear-gradient(135deg, #d4af37 0%, #aa8c2c 100%);
+  }
+
+  .gold-gradient:hover {
+    background: linear-gradient(135deg, #e5c047 0%, #bb9d3c 100%);
   }
 }

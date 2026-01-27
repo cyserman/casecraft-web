@@ -38,7 +38,7 @@ export default function FamilyLaw() {
               Family law matters are deeply personal and often emotionally challenging. Whether you're going through a divorce, facing custody disputes, or dealing with other family law issues, you need an attorney who understands both the legal complexities and the human dimensions of your situation.
             </p>
             <p className="text-charcoal-gray mb-4 leading-relaxed">
-              At Griff Law, we approach family law with compassion and pragmatism. We understand that your primary concern is protecting your family's wellbeing and securing the best possible outcome for you and your children. We'll work tirelessly to achieve that goal through negotiation, mediation, or litigation if necessary.
+              At Glaw, we approach family law with compassion and pragmatism. We understand that your primary concern is protecting your family's wellbeing and securing the best possible outcome for you and your children. We'll work tirelessly to achieve that goal through negotiation, mediation, or litigation if necessary.
             </p>
             <p className="text-charcoal-gray leading-relaxed">
               Our goal is to help you move forward with your life while protecting your rights and your family's interests.

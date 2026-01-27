@@ -16,6 +16,10 @@ import FamilyLaw from "./pages/FamilyLaw";
 import Contact from "./pages/Contact";
 import FileOrganizer from "./pages/FileOrganizer";
 import CaseAssist from "./pages/CaseAssist";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import Resources from "./pages/Resources";
+import SteveDesk from "./pages/SteveDesk";
+import FloatingNav from "./components/FloatingNav";
 import { useAuth } from "@/_core/hooks/useAuth";
 
 function ProtectedRoute({ component: Component }: { component: React.ComponentType }) {
@@ -50,12 +54,16 @@ function Router() {
           <Route path="/services/criminal-defense" component={CriminalDefense} />
           <Route path="/services/dui-defense" component={DUIDefense} />
           <Route path="/services/family-law" component={FamilyLaw} />
+          <Route path="/resources" component={Resources} />
+          <Route path="/steve" component={SteveDesk} />
           <Route path="/contact" component={Contact} />
+          <Route path="/privacy" component={PrivacyPolicy} />
           <Route path="/tools/file-organizer" component={() => <ProtectedRoute component={FileOrganizer} />} />
           <Route path="/tools/case-assist" component={() => <ProtectedRoute component={CaseAssist} />} />
           <Route path="/404" component={NotFound} />
           <Route component={NotFound} />
         </Switch>
+        <FloatingNav />
       </main>
       <Footer />
     </div>

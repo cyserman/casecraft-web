@@ -38,7 +38,7 @@ export default function DUIDefense() {
               A DUI conviction can have devastating consequences for your life. Beyond the immediate legal penalties—fines, jail time, and license suspension—a DUI conviction can affect your employment, your insurance rates, your professional licenses, and your ability to travel.
             </p>
             <p className="text-charcoal-gray mb-4 leading-relaxed">
-              At Griff Law, we have extensive experience defending DUI cases. We understand the science behind breath and blood testing, we know how to challenge field sobriety tests, and we understand the nuances of Pennsylvania DUI law. We've successfully defended hundreds of DUI cases and achieved favorable outcomes for our clients.
+              At Glaw, we have extensive experience defending DUI cases. We understand the science behind breath and blood testing, we know how to challenge field sobriety tests, and we understand the nuances of Pennsylvania DUI law. We've successfully defended hundreds of DUI cases and achieved favorable outcomes for our clients.
             </p>
             <p className="text-charcoal-gray leading-relaxed">
               Whether this is your first DUI or you have prior offenses, we'll aggressively protect your rights and work toward the best possible resolution of your case.

@@ -25,4 +25,32 @@ export const users = mysqlTable("users", {
 export type User = typeof users.$inferSelect;
 export type InsertUser = typeof users.$inferInsert;
 
-// TODO: Add your tables here
+export const evidenceLogs = mysqlTable("evidence_logs", {
+  id: int("id").autoincrement().primaryKey(),
+  userId: int("user_id"), // Optional if not fully auth-gated yet
+  rawText: text("raw_text").notNull(),
+  refinedSummary: text("refined_summary"),
+  fileMetadata: text("file_metadata"), // JSON string of file info
+  status: mysqlEnum("status", ["pending", "processed", "archived"]).default("pending").notNull(),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+});
+
+export type EvidenceLog = typeof evidenceLogs.$inferSelect;
+export type InsertEvidenceLog = typeof evidenceLogs.$inferInsert;
+
+export const blogPosts = mysqlTable("blog_posts", {
+  id: int("id").autoincrement().primaryKey(),
+  slug: varchar("slug", { length: 255 }).notNull().unique(),
+  title: text("title").notNull(),
+  content: text("content").notNull(), // Markdown content
+  excerpt: text("excerpt"),
+  authorName: varchar("author_name", { length: 255 }).default("Steve Griffiths"),
+  imageUrl: varchar("image_url", { length: 1024 }),
+  category: varchar("category", { length: 100 }).default("Legal Insights"),
+  publishedAt: timestamp("published_at").defaultNow(),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+  updatedAt: timestamp("updated_at").defaultNow().onUpdateNow().notNull(),
+});
+
+export type BlogPost = typeof blogPosts.$inferSelect;
+export type InsertBlogPost = typeof blogPosts.$inferInsert;

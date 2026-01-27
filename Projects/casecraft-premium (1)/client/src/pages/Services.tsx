@@ -74,7 +74,7 @@ export default function Services() {
 
         {/* Why Choose Us */}
         <div className="max-w-4xl mx-auto mb-16">
-          <h2 className="text-3xl font-bold text-navy-blue mb-12 text-center">Why Choose Griff Law</h2>
+          <h2 className="text-3xl font-bold text-navy-blue mb-12 text-center">Why Choose Glaw</h2>
           <div className="grid md:grid-cols-2 gap-8">
             {[
               {

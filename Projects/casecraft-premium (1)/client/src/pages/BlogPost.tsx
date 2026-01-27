@@ -85,7 +85,7 @@ export default function BlogPost() {
               <div className="flex-1">
                 <h3 className="text-xl font-bold text-navy-blue mb-2">About the Author</h3>
                 <p className="text-charcoal-gray mb-4">
-                  Steve Griffiths is a criminal defense attorney with extensive experience in DUI defense, ARD cases, and constitutional rights representation in Montgomery and Chester Counties, Pennsylvania.
+                  Glaw is a criminal defense practice with extensive experience in DUI defense, ARD cases, and constitutional rights representation in Montgomery and Chester Counties, Pennsylvania.
                 </p>
                 <p className="text-charcoal-gray">
                   With a deep understanding of Pennsylvania criminal law and a commitment to protecting his clients' rights, Steve provides comprehensive legal guidance on complex criminal matters.

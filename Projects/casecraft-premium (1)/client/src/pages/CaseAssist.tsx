@@ -1,6 +1,22 @@
-import { ArrowRight, BarChart3, Clock, Lock, Zap, FileText, Bookmark } from "lucide-react";
+import { ArrowRight, BarChart3, Clock, Lock, Zap, FileText, Bookmark, Brain, CheckCircle } from "lucide-react";
+import { useEffect, useState } from "react";
+import { AppFile, FileStatus } from "@/types/ingestor";
 
 export default function CaseAssist() {
+  const [recentEvidence, setRecentEvidence] = useState<AppFile[]>([]);
+
+  useEffect(() => {
+    const saved = localStorage.getItem("casecraft_files");
+    if (saved) {
+      try {
+        const parsed = JSON.parse(saved);
+        setRecentEvidence(parsed.filter((f: any) => f.status === FileStatus.COMPLETED));
+      } catch (e) {
+        console.error("Failed to load evidence", e);
+      }
+    }
+  }, []);
+
   return (
     <div className="pt-32 pb-20">
       {/* Hero */}
@@ -14,6 +30,39 @@ export default function CaseAssist() {
           </p>
         </div>
       </section>
+
+      {/* RECENT INTEL - NEW SECTION */}
+      {recentEvidence.length > 0 && (
+        <section className="container mb-20">
+          <div className="glass-panel-lg p-8 rounded-xl border-l-4 border-yellow-500">
+            <div className="flex items-center justify-between mb-6">
+              <h2 className="text-2xl font-serif font-bold text-navy-blue flex items-center gap-2">
+                <Brain className="w-6 h-6 text-yellow-500" />
+                Recent Intelligence
+              </h2>
+              <span className="text-sm font-bold text-slate-500 uppercase tracking-wider">{recentEvidence.length} Sources Analyzed</span>
+            </div>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {recentEvidence.slice(0, 3).map(file => (
+                <div key={file.id} className="bg-white p-6 rounded-lg shadow-sm border border-slate-100 hover:shadow-md transition-all">
+                  <div className="flex justify-between items-start mb-3">
+                    <span className="text-xs font-bold text-blue-600 bg-blue-50 px-2 py-1 rounded uppercase">{file.schema?.documentType || "Document"}</span>
+                    <CheckCircle className="w-4 h-4 text-green-500" />
+                  </div>
+                  <h3 className="font-bold text-navy-blue mb-2 line-clamp-1" title={file.schema?.title}>{file.schema?.title || file.file.name}</h3>
+                  <p className="text-sm text-slate-600 line-clamp-3 mb-4">{file.schema?.summary}</p>
+                  <div className="flex gap-2 flex-wrap">
+                    {file.schema?.keywords.slice(0, 3).map((k, i) => (
+                      <span key={i} className="text-xs text-slate-500 bg-slate-100 px-1.5 py-0.5 rounded">#{k}</span>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Features Overview */}
       <section className="container mb-20">
@@ -55,7 +104,7 @@ export default function CaseAssist() {
       <section className="container mb-20">
         <div className="glass-panel-lg p-12 rounded-2xl">
           <h2 className="text-3xl font-serif font-bold text-navy-blue mb-8">Dashboard Features</h2>
-          
+
           <div className="space-y-8">
             {/* Evidence Tracking */}
             <div className="border-b border-slate-gray pb-8 last:border-b-0">

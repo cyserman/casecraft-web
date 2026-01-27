@@ -1,14 +1,19 @@
 import { useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { blogPosts } from "@shared/blog-data";
-import { ArrowRight, Calendar, Clock, User } from "lucide-react";
+import { ArrowRight, Calendar, Clock, User, Shield } from "lucide-react";
 import Breadcrumbs from "@/components/Breadcrumbs";
 
 export default function Blog() {
   const [, navigate] = useLocation();
 
   const featuredPost = blogPosts.find((p) => p.featured) || blogPosts[0];
-  const otherPosts = blogPosts.filter((p) => p.id !== featuredPost?.id);
+  // Group posts by category (Armory Folders)
+  const categories = Array.from(new Set(blogPosts.map(p => p.category)));
+  const postsByCategory = categories.reduce((acc, category) => {
+    acc[category] = blogPosts.filter(p => p.category === category);
+    return acc;
+  }, {} as Record<string, typeof blogPosts>);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-off-white via-light-gray to-off-white pt-24 text-charcoal-gray">
@@ -22,7 +27,7 @@ export default function Blog() {
           />
           <h1 className="text-4xl md:text-5xl font-serif font-bold mb-6">Steve's Corner</h1>
           <p className="text-lg md:text-xl text-light-gray max-w-2xl">
-            Legal insights, case analysis, and updates on criminal law from Steve Griffiths.
+            Legal insights, case analysis, and updates on criminal law.
           </p>
         </div>
       </div>
@@ -75,37 +80,47 @@ export default function Blog() {
           </div>
         )}
 
-        {/* Articles Grid */}
+        {/* Armory Folders - Categorized Content */}
         <div className="mb-16">
-          <h2 className="text-3xl font-bold text-navy-blue mb-12 text-center">All Articles</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {otherPosts.map((post) => (
-              <div
-                key={post.id}
-                className="glass-panel p-6 hover:shadow-lg transition-shadow cursor-pointer"
-                onClick={() => navigate(`/blog/${post.slug}`)}
-              >
-                <span className="text-xs font-bold text-steel-blue uppercase tracking-widest">
-                  {post.category}
-                </span>
-                <h3 className="text-lg font-bold text-navy-blue my-3 line-clamp-2">
-                  {post.title}
-                </h3>
-                <div className="flex flex-wrap items-center gap-3 text-charcoal-gray text-xs mb-4">
-                  <div className="flex items-center gap-1">
-                    <User className="w-3 h-3" />
-                    <span>{post.author}</span>
+          <h2 className="text-3xl font-bold text-navy-blue mb-12 text-center uppercase tracking-widest">Tactical Library</h2>
+
+          <div className="space-y-16">
+            {categories.map((category) => (
+              <div key={category} className="border-t border-slate-200 pt-8">
+                <div className="flex items-center gap-3 mb-8">
+                  <div className="bg-navy-blue p-2 rounded text-white">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-folder"><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z" /></svg>
                   </div>
-                  <div className="flex items-center gap-1">
-                    <Clock className="w-3 h-3" />
-                    <span>{post.readTime} min</span>
-                  </div>
+                  <h3 className="text-2xl font-serif font-bold text-navy-blue">{category} Protocol</h3>
                 </div>
-                <p className="text-charcoal-gray text-sm line-clamp-3 mb-4">
-                  {post.excerpt}
-                </p>
-                <div className="text-sm text-steel-blue font-semibold hover:text-navy-blue transition-colors">
-                  Read More →
+
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {postsByCategory[category].map((post) => (
+                    <div
+                      key={post.id}
+                      className="glass-panel p-6 hover:shadow-lg transition-shadow cursor-pointer relative group"
+                      onClick={() => navigate(`/blog/${post.slug}`)}
+                    >
+                      <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                        <Shield className="w-16 h-16 text-navy-blue" />
+                      </div>
+                      <h4 className="text-lg font-bold text-navy-blue my-3 line-clamp-2 group-hover:text-gold transition-colors">
+                        {post.title}
+                      </h4>
+                      <div className="flex flex-wrap items-center gap-3 text-charcoal-gray text-xs mb-4">
+                        <div className="flex items-center gap-1">
+                          <Clock className="w-3 h-3" />
+                          <span>{post.readTime} min read</span>
+                        </div>
+                      </div>
+                      <p className="text-charcoal-gray text-sm line-clamp-3 mb-4">
+                        {post.excerpt}
+                      </p>
+                      <div className="text-sm text-steel-blue font-semibold group-hover:text-gold transition-colors flex items-center gap-1">
+                        Access File <ArrowRight className="w-3 h-3" />
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </div>
             ))}
@@ -118,14 +133,14 @@ export default function Blog() {
             <div>
               <img
                 src="/steve.jpg"
-                alt="Steve Griffiths"
+                alt="Attorney"
                 className="w-full h-auto rounded-lg object-cover shadow-lg"
               />
             </div>
             <div className="md:col-span-2">
-              <h2 className="text-3xl font-bold text-navy-blue mb-4">About Steve Griffiths</h2>
+              <h2 className="text-3xl font-bold text-navy-blue mb-4">About Glaw</h2>
               <p className="text-charcoal-gray mb-4 leading-relaxed">
-                Steve Griffiths is a dedicated criminal defense attorney serving Montgomery and Chester Counties, Pennsylvania. With extensive experience in DUI defense, ARD cases, and constitutional rights representation, he provides expert legal guidance for clients facing criminal charges.
+                Glaw is a dedicated criminal defense practice serving Montgomery and Chester Counties, Pennsylvania. With extensive experience in DUI defense, ARD cases, and constitutional rights representation, we provide expert legal guidance for clients facing criminal charges.
               </p>
               <p className="text-charcoal-gray mb-6 leading-relaxed">
                 Steve's approach combines aggressive advocacy with deep knowledge of Pennsylvania criminal law. He stays current on the latest legal developments and uses that knowledge to protect his clients' rights and achieve favorable outcomes.

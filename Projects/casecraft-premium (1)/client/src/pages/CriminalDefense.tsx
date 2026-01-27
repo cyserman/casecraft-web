@@ -73,7 +73,7 @@ export default function CriminalDefense() {
           <div className="glass-panel-lg p-8 md:p-12">
             <h2 className="text-3xl font-bold text-navy-blue mb-6">Protecting Your Rights</h2>
             <p className="text-charcoal-gray mb-4 leading-relaxed">
-              If you've been charged with a criminal offense, the decisions you make in the first hours and days can have profound consequences for your future. At Griff Law, we understand the stress and uncertainty you're facing, and we're committed to providing aggressive, compassionate representation.
+              If you've been charged with a criminal offense, the decisions you make in the first hours and days can have profound consequences for your future. At Glaw, we understand the stress and uncertainty you're facing, and we're committed to providing aggressive, compassionate representation.
             </p>
             <p className="text-charcoal-gray mb-4 leading-relaxed">
               Whether you're facing felony or misdemeanor charges, our experienced criminal defense attorneys will thoroughly investigate your case, protect your constitutional rights, and develop a strategic defense tailored to your specific circumstances.
@@ -101,7 +101,7 @@ export default function CriminalDefense() {
         {/* Benefits Section */}
         <div className="max-w-3xl mx-auto mb-16">
           <div className="glass-panel-lg p-8 md:p-12">
-            <h2 className="text-3xl font-bold text-navy-blue mb-8">Why Choose Griff Law</h2>
+            <h2 className="text-3xl font-bold text-navy-blue mb-8">Why Choose Glaw</h2>
             <div className="grid md:grid-cols-2 gap-4">
               {benefits.map((benefit, index) => (
                 <div key={index} className="flex items-start gap-3">

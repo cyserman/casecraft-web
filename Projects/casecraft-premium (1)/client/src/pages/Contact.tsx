@@ -39,7 +39,7 @@ export default function Contact() {
             Contact Us
           </h1>
           <p className="text-xl text-charcoal-gray max-w-3xl mx-auto">
-            Ready to discuss your case? Contact Griff Law for a confidential consultation.
+            Ready to discuss your case? Contact Glaw for a confidential consultation.
           </p>
         </div>
       </section>
