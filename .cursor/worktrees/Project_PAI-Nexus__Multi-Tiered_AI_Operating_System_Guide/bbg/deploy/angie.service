@@ -1,0 +1,33 @@
+# Angie (Agent Zero) - systemd service for Enforcer Droplet
+# Install: sudo cp angie.service /etc/systemd/system/ && sudo systemctl daemon-reload
+
+[Unit]
+Description=Angie PAI-Nexus AI Assistant
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/root/Angie
+
+# Load .env from PAI location (create /root/.pai/.env with GEMINI_API_KEY etc.)
+EnvironmentFile=-/root/.pai/.env
+
+# Listen on all interfaces so Chromebook/browser can connect (not just localhost)
+Environment=HOST=0.0.0.0
+Environment=FLASK_RUN_HOST=0.0.0.0
+
+# Use venv Python
+Environment=PATH=/root/Angie/venv/bin:/usr/local/bin:/usr/bin:/bin
+ExecStart=/root/Angie/venv/bin/python3 run_ui.py
+
+# Restart on failure
+Restart=always
+RestartSec=10
+
+# Logging
+StandardOutput=append:/root/Angie/angie.log
+StandardError=append:/root/Angie/angie.log
+
+[Install]
+WantedBy=multi-user.target
