@@ -1,6 +1,6 @@
 # Copilot prompts (use after connecting with Angie’s credentials)
 
-**Repo state:** Deployment bulletproofing is on `main` (deploy/ folder). Use these as starting points and add details as needed.
+**Repo state:** This repo (angie-deploy) contains only Angie deployment for the Enforcer droplet. No other projects. Use these as starting points and add details as needed.
 
 ---
 
@@ -9,7 +9,7 @@
 Use when Angie on the droplet is **running** and you want to tighten security or reliability:
 
 ```
-Repo: casecraft-web (main). Angie runs on Enforcer Droplet 157.245.7.40 at http://157.245.7.40:5000.
+Repo: this repo (angie-deploy, main). Angie runs on Enforcer Droplet 157.245.7.40 at http://157.245.7.40:5000.
 
 Context: Deployment is in `deploy/` (deploy-to-droplet.sh, angie.service, RUNBOOK.md, BULLETPROOF_DEPLOYMENT_PLAN.md). The app is up and I want to harden/secure the running state.
 
@@ -26,7 +26,7 @@ Please:
 Use when Angie on the droplet is **down or broken**:
 
 ```
-Repo: casecraft-web (main). Angie is deployed to Enforcer Droplet 157.245.7.40 but is currently not working / not reachable.
+Repo: this repo (angie-deploy, main). Angie is deployed to Enforcer Droplet 157.245.7.40 but is currently not working / not reachable.
 
 Context: Deployment is in `deploy/`. See RUNBOOK.md and TROUBLESHOOT_REFUSED.md for diagnostics.
 

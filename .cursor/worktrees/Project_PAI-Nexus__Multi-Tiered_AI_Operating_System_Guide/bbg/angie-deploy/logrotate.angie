@@ -1,0 +1,9 @@
+# Angie app log - rotate daily, keep 5, compress. Install on droplet: /etc/logrotate.d/angie
+/root/Angie/angie.log {
+    daily
+    rotate 5
+    compress
+    missingok
+    notifempty
+    copytruncate
+}
