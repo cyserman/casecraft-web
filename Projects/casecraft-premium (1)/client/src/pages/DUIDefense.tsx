@@ -1,13 +1,42 @@
 import { Button } from "@/components/ui/button";
 import { useLocation } from "wouter";
-import { AlertCircle, CheckCircle, Microscope, FileText, Scale, Users } from "lucide-react";
+import { Shield, CheckCircle, FileText, Clock, AlertCircle, Users } from "lucide-react";
 import Breadcrumbs from "@/components/Breadcrumbs";
 
 export default function DUIDefense() {
   const [, navigate] = useLocation();
 
   const services = [
-    // ... (rest of the file remains same, I'll just change the return)
+    {
+      icon: <Shield className="w-8 h-8" />,
+      title: "DUI Defense",
+      description: "Aggressive representation for DUI and DWI charges, challenging evidence and protecting your rights.",
+    },
+    {
+      icon: <FileText className="w-8 h-8" />,
+      title: "Breathalyzer Defense",
+      description: "Challenging breathalyzer results and calibration records to suppress evidence.",
+    },
+    {
+      icon: <AlertCircle className="w-8 h-8" />,
+      title: "Field Sobriety Test Defense",
+      description: "Challenging the administration and validity of field sobriety tests.",
+    },
+    {
+      icon: <Users className="w-8 h-8" />,
+      title: "ARD Representation",
+      description: "Guiding first-time offenders through the Accelerated Rehabilitative Disposition program.",
+    },
+    {
+      icon: <Clock className="w-8 h-8" />,
+      title: "License Suspension Appeals",
+      description: "Fighting license suspensions and restoring your driving privileges.",
+    },
+    {
+      icon: <CheckCircle className="w-8 h-8" />,
+      title: "Expungement",
+      description: "Clearing DUI records and protecting your future opportunities.",
+    },
   ];
 
   return (

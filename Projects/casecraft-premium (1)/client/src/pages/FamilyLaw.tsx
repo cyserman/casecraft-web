@@ -7,7 +7,36 @@ export default function FamilyLaw() {
   const [, navigate] = useLocation();
 
   const services = [
-    // ... (rest of the file remains same, I'll just change the return)
+    {
+      icon: <Heart className="w-8 h-8" />,
+      title: "Divorce",
+      description: "Compassionate representation for contested and uncontested divorces, including property division and alimony.",
+    },
+    {
+      icon: <Users className="w-8 h-8" />,
+      title: "Child Custody",
+      description: "Advocating for custody arrangements that serve your children's best interests.",
+    },
+    {
+      icon: <FileText className="w-8 h-8" />,
+      title: "Child Support",
+      description: "Ensuring fair child support calculations and modifications when circumstances change.",
+    },
+    {
+      icon: <Scale className="w-8 h-8" />,
+      title: "Property Division",
+      description: "Equitable distribution of marital assets and debts.",
+    },
+    {
+      icon: <Home className="w-8 h-8" />,
+      title: "Alimony/Spousal Support",
+      description: "Negotiating and litigating spousal support and alimony matters.",
+    },
+    {
+      icon: <CheckCircle className="w-8 h-8" />,
+      title: "Prenuptial Agreements",
+      description: "Drafting and reviewing prenuptial agreements to protect your assets.",
+    },
   ];
 
   return (
