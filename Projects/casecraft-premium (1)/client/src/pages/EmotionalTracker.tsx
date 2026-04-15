@@ -21,7 +21,6 @@ const EmotionalTracker: React.FC = () => {
   ];
 
   useEffect(() => {
-    // Load existing entries from localStorage
     const saved = localStorage.getItem('casecraft_emotional_log');
     if (saved) {
       setEntries(JSON.parse(saved));
@@ -30,7 +29,6 @@ const EmotionalTracker: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    // Save entries to localStorage
     localStorage.setItem('casecraft_emotional_log', JSON.stringify(entries));
     setFilteredEntries(entries);
   }, [entries]);
@@ -67,7 +65,6 @@ const EmotionalTracker: React.FC = () => {
     setFilteredEntries(entries.filter(entry => entry.date === date));
   };
 
-  // Get insights from entries
   const totalEntries = entries.length;
   const recentEntries = entries.slice(0, 7);
   const avgIntensity = entries.length > 0 
@@ -88,7 +85,6 @@ const EmotionalTracker: React.FC = () => {
     <div className="min-h-screen bg-gradient-to-b from-yellow-50 to-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="max-w-4xl mx-auto">
-          {/* Header */}
           <div className="text-center mb-12">
             <h1 className="text-4xl font-bold text-navy-blue mb-4">Emotional Management Tracker</h1>
             <p className="text-gray-600">
@@ -202,7 +198,6 @@ const EmotionalTracker: React.FC = () => {
                   <textarea
                     value={newEntry.notes}
                     onChange={(e) => setNewEntry({...newEntry, notes: e.target.value})}
-                    placeholder="Additional context..."
                     rows={4}
                     className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500"
                   />

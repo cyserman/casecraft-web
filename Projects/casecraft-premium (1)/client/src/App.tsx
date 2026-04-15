@@ -61,8 +61,9 @@ function Router() {
           <Route path="/privacy" component={PrivacyPolicy} />
           <Route path="/tools/file-organizer" component={() => <ProtectedRoute component={FileOrganizer} />} />
           <Route path="/tools/case-assist" component={() => <ProtectedRoute component={CaseAssist} />} />
-          <Route path="/court-practice" component={CourtPractice} />
-          <Route path="/404" component={NotFound} />
+<Route path="/court-practice" component={CourtPractice} />
+<Route path="/motion-generator" component={MotionGenerator} />
+<Route path="/404" component={NotFound} />
           <Route component={NotFound} />
         </Switch>
         <FloatingNav />

@@ -106,6 +106,9 @@ export default function Header() {
               Sign In
             </a>
           )}
+          <Link href="/motion-generator" className="glass-button-primary px-6 py-2 text-sm font-semibold ml-2">
+            Motion Generator
+          </Link>
         </div>
 
         {/* Mobile Menu Button */}
