@@ -16,6 +16,7 @@ import FamilyLaw from "./pages/FamilyLaw";
 import Contact from "./pages/Contact";
 import FileOrganizer from "./pages/FileOrganizer";
 import CaseAssist from "./pages/CaseAssist";
+import CourtPractice from "./pages/CourtPractice";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import Resources from "./pages/Resources";
 import SteveDesk from "./pages/SteveDesk";
@@ -60,6 +61,7 @@ function Router() {
           <Route path="/privacy" component={PrivacyPolicy} />
           <Route path="/tools/file-organizer" component={() => <ProtectedRoute component={FileOrganizer} />} />
           <Route path="/tools/case-assist" component={() => <ProtectedRoute component={CaseAssist} />} />
+          <Route path="/court-practice" component={CourtPractice} />
           <Route path="/404" component={NotFound} />
           <Route component={NotFound} />
         </Switch>

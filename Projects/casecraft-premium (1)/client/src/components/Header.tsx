@@ -23,6 +23,7 @@ export default function Header() {
   const publicNavItems = [
     { label: "Home", href: "/", icon: Home },
     { label: "Services", href: "/services", hasSubmenu: true, icon: Scale },
+    { label: "Court Practice", href: "/court-practice", icon: Gavel },
     { label: "Blog", href: "/blog", icon: FileText },
     { label: "Contact", href: "/contact", icon: Phone },
   ];
